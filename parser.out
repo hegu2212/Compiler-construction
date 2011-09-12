@@ -1,0 +1,390 @@
+Created by PLY version 3.4 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMMENT
+
+Grammar
+
+Rule 0     S' -> module
+Rule 1     module -> stmt_list
+Rule 2     stmt_list -> <empty>
+Rule 3     stmt_list -> statement stmt_list
+Rule 4     statement -> PRINT expression
+Rule 5     statement -> NAME EQUALS expression
+Rule 6     statement -> expression
+Rule 7     expression -> expression PLUS expression
+Rule 8     expression -> MINUS expression
+Rule 9     expression -> INT
+Rule 10    expression -> NAME
+Rule 11    expression -> INPUT LPAREN RPAREN
+Rule 12    expression -> LPAREN expression RPAREN
+
+Terminals, with rules where they appear
+
+COMMENT              : 
+EQUALS               : 5
+INPUT                : 11
+INT                  : 9
+LPAREN               : 11 12
+MINUS                : 8
+NAME                 : 5 10
+PLUS                 : 7
+PRINT                : 4
+RPAREN               : 11 12
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 4 5 6 7 7 8 12
+module               : 0
+statement            : 3
+stmt_list            : 1 3
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . module
+    (1) module -> . stmt_list
+    (2) stmt_list -> .
+    (3) stmt_list -> . statement stmt_list
+    (4) statement -> . PRINT expression
+    (5) statement -> . NAME EQUALS expression
+    (6) statement -> . expression
+    (7) expression -> . expression PLUS expression
+    (8) expression -> . MINUS expression
+    (9) expression -> . INT
+    (10) expression -> . NAME
+    (11) expression -> . INPUT LPAREN RPAREN
+    (12) expression -> . LPAREN expression RPAREN
+
+    $end            reduce using rule 2 (stmt_list -> .)
+    PRINT           shift and go to state 7
+    NAME            shift and go to state 3
+    MINUS           shift and go to state 10
+    INT             shift and go to state 4
+    INPUT           shift and go to state 8
+    LPAREN          shift and go to state 2
+
+    stmt_list                      shift and go to state 1
+    expression                     shift and go to state 9
+    statement                      shift and go to state 6
+    module                         shift and go to state 5
+
+state 1
+
+    (1) module -> stmt_list .
+
+    $end            reduce using rule 1 (module -> stmt_list .)
+
+
+state 2
+
+    (12) expression -> LPAREN . expression RPAREN
+    (7) expression -> . expression PLUS expression
+    (8) expression -> . MINUS expression
+    (9) expression -> . INT
+    (10) expression -> . NAME
+    (11) expression -> . INPUT LPAREN RPAREN
+    (12) expression -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 10
+    INT             shift and go to state 4
+    NAME            shift and go to state 11
+    INPUT           shift and go to state 8
+    LPAREN          shift and go to state 2
+
+    expression                     shift and go to state 12
+
+state 3
+
+    (5) statement -> NAME . EQUALS expression
+    (10) expression -> NAME .
+
+    EQUALS          shift and go to state 13
+    PLUS            reduce using rule 10 (expression -> NAME .)
+    PRINT           reduce using rule 10 (expression -> NAME .)
+    NAME            reduce using rule 10 (expression -> NAME .)
+    MINUS           reduce using rule 10 (expression -> NAME .)
+    INT             reduce using rule 10 (expression -> NAME .)
+    INPUT           reduce using rule 10 (expression -> NAME .)
+    LPAREN          reduce using rule 10 (expression -> NAME .)
+    $end            reduce using rule 10 (expression -> NAME .)
+
+
+state 4
+
+    (9) expression -> INT .
+
+    RPAREN          reduce using rule 9 (expression -> INT .)
+    PLUS            reduce using rule 9 (expression -> INT .)
+    PRINT           reduce using rule 9 (expression -> INT .)
+    NAME            reduce using rule 9 (expression -> INT .)
+    MINUS           reduce using rule 9 (expression -> INT .)
+    INT             reduce using rule 9 (expression -> INT .)
+    INPUT           reduce using rule 9 (expression -> INT .)
+    LPAREN          reduce using rule 9 (expression -> INT .)
+    $end            reduce using rule 9 (expression -> INT .)
+
+
+state 5
+
+    (0) S' -> module .
+
+
+
+state 6
+
+    (3) stmt_list -> statement . stmt_list
+    (2) stmt_list -> .
+    (3) stmt_list -> . statement stmt_list
+    (4) statement -> . PRINT expression
+    (5) statement -> . NAME EQUALS expression
+    (6) statement -> . expression
+    (7) expression -> . expression PLUS expression
+    (8) expression -> . MINUS expression
+    (9) expression -> . INT
+    (10) expression -> . NAME
+    (11) expression -> . INPUT LPAREN RPAREN
+    (12) expression -> . LPAREN expression RPAREN
+
+    $end            reduce using rule 2 (stmt_list -> .)
+    PRINT           shift and go to state 7
+    NAME            shift and go to state 3
+    MINUS           shift and go to state 10
+    INT             shift and go to state 4
+    INPUT           shift and go to state 8
+    LPAREN          shift and go to state 2
+
+    stmt_list                      shift and go to state 14
+    expression                     shift and go to state 9
+    statement                      shift and go to state 6
+
+state 7
+
+    (4) statement -> PRINT . expression
+    (7) expression -> . expression PLUS expression
+    (8) expression -> . MINUS expression
+    (9) expression -> . INT
+    (10) expression -> . NAME
+    (11) expression -> . INPUT LPAREN RPAREN
+    (12) expression -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 10
+    INT             shift and go to state 4
+    NAME            shift and go to state 11
+    INPUT           shift and go to state 8
+    LPAREN          shift and go to state 2
+
+    expression                     shift and go to state 15
+
+state 8
+
+    (11) expression -> INPUT . LPAREN RPAREN
+
+    LPAREN          shift and go to state 16
+
+
+state 9
+
+    (6) statement -> expression .
+    (7) expression -> expression . PLUS expression
+
+    PRINT           reduce using rule 6 (statement -> expression .)
+    NAME            reduce using rule 6 (statement -> expression .)
+    MINUS           reduce using rule 6 (statement -> expression .)
+    INT             reduce using rule 6 (statement -> expression .)
+    INPUT           reduce using rule 6 (statement -> expression .)
+    LPAREN          reduce using rule 6 (statement -> expression .)
+    $end            reduce using rule 6 (statement -> expression .)
+    PLUS            shift and go to state 17
+
+
+state 10
+
+    (8) expression -> MINUS . expression
+    (7) expression -> . expression PLUS expression
+    (8) expression -> . MINUS expression
+    (9) expression -> . INT
+    (10) expression -> . NAME
+    (11) expression -> . INPUT LPAREN RPAREN
+    (12) expression -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 10
+    INT             shift and go to state 4
+    NAME            shift and go to state 11
+    INPUT           shift and go to state 8
+    LPAREN          shift and go to state 2
+
+    expression                     shift and go to state 18
+
+state 11
+
+    (10) expression -> NAME .
+
+    RPAREN          reduce using rule 10 (expression -> NAME .)
+    PLUS            reduce using rule 10 (expression -> NAME .)
+    PRINT           reduce using rule 10 (expression -> NAME .)
+    NAME            reduce using rule 10 (expression -> NAME .)
+    MINUS           reduce using rule 10 (expression -> NAME .)
+    INT             reduce using rule 10 (expression -> NAME .)
+    INPUT           reduce using rule 10 (expression -> NAME .)
+    LPAREN          reduce using rule 10 (expression -> NAME .)
+    $end            reduce using rule 10 (expression -> NAME .)
+
+
+state 12
+
+    (12) expression -> LPAREN expression . RPAREN
+    (7) expression -> expression . PLUS expression
+
+    RPAREN          shift and go to state 19
+    PLUS            shift and go to state 17
+
+
+state 13
+
+    (5) statement -> NAME EQUALS . expression
+    (7) expression -> . expression PLUS expression
+    (8) expression -> . MINUS expression
+    (9) expression -> . INT
+    (10) expression -> . NAME
+    (11) expression -> . INPUT LPAREN RPAREN
+    (12) expression -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 10
+    INT             shift and go to state 4
+    NAME            shift and go to state 11
+    INPUT           shift and go to state 8
+    LPAREN          shift and go to state 2
+
+    expression                     shift and go to state 20
+
+state 14
+
+    (3) stmt_list -> statement stmt_list .
+
+    $end            reduce using rule 3 (stmt_list -> statement stmt_list .)
+
+
+state 15
+
+    (4) statement -> PRINT expression .
+    (7) expression -> expression . PLUS expression
+
+    PRINT           reduce using rule 4 (statement -> PRINT expression .)
+    NAME            reduce using rule 4 (statement -> PRINT expression .)
+    MINUS           reduce using rule 4 (statement -> PRINT expression .)
+    INT             reduce using rule 4 (statement -> PRINT expression .)
+    INPUT           reduce using rule 4 (statement -> PRINT expression .)
+    LPAREN          reduce using rule 4 (statement -> PRINT expression .)
+    $end            reduce using rule 4 (statement -> PRINT expression .)
+    PLUS            shift and go to state 17
+
+
+state 16
+
+    (11) expression -> INPUT LPAREN . RPAREN
+
+    RPAREN          shift and go to state 21
+
+
+state 17
+
+    (7) expression -> expression PLUS . expression
+    (7) expression -> . expression PLUS expression
+    (8) expression -> . MINUS expression
+    (9) expression -> . INT
+    (10) expression -> . NAME
+    (11) expression -> . INPUT LPAREN RPAREN
+    (12) expression -> . LPAREN expression RPAREN
+
+    MINUS           shift and go to state 10
+    INT             shift and go to state 4
+    NAME            shift and go to state 11
+    INPUT           shift and go to state 8
+    LPAREN          shift and go to state 2
+
+    expression                     shift and go to state 22
+
+state 18
+
+    (8) expression -> MINUS expression .
+    (7) expression -> expression . PLUS expression
+
+    RPAREN          reduce using rule 8 (expression -> MINUS expression .)
+    PLUS            reduce using rule 8 (expression -> MINUS expression .)
+    PRINT           reduce using rule 8 (expression -> MINUS expression .)
+    NAME            reduce using rule 8 (expression -> MINUS expression .)
+    MINUS           reduce using rule 8 (expression -> MINUS expression .)
+    INT             reduce using rule 8 (expression -> MINUS expression .)
+    INPUT           reduce using rule 8 (expression -> MINUS expression .)
+    LPAREN          reduce using rule 8 (expression -> MINUS expression .)
+    $end            reduce using rule 8 (expression -> MINUS expression .)
+
+  ! PLUS            [ shift and go to state 17 ]
+
+
+state 19
+
+    (12) expression -> LPAREN expression RPAREN .
+
+    RPAREN          reduce using rule 12 (expression -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 12 (expression -> LPAREN expression RPAREN .)
+    PRINT           reduce using rule 12 (expression -> LPAREN expression RPAREN .)
+    NAME            reduce using rule 12 (expression -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 12 (expression -> LPAREN expression RPAREN .)
+    INT             reduce using rule 12 (expression -> LPAREN expression RPAREN .)
+    INPUT           reduce using rule 12 (expression -> LPAREN expression RPAREN .)
+    LPAREN          reduce using rule 12 (expression -> LPAREN expression RPAREN .)
+    $end            reduce using rule 12 (expression -> LPAREN expression RPAREN .)
+
+
+state 20
+
+    (5) statement -> NAME EQUALS expression .
+    (7) expression -> expression . PLUS expression
+
+    PRINT           reduce using rule 5 (statement -> NAME EQUALS expression .)
+    NAME            reduce using rule 5 (statement -> NAME EQUALS expression .)
+    MINUS           reduce using rule 5 (statement -> NAME EQUALS expression .)
+    INT             reduce using rule 5 (statement -> NAME EQUALS expression .)
+    INPUT           reduce using rule 5 (statement -> NAME EQUALS expression .)
+    LPAREN          reduce using rule 5 (statement -> NAME EQUALS expression .)
+    $end            reduce using rule 5 (statement -> NAME EQUALS expression .)
+    PLUS            shift and go to state 17
+
+
+state 21
+
+    (11) expression -> INPUT LPAREN RPAREN .
+
+    RPAREN          reduce using rule 11 (expression -> INPUT LPAREN RPAREN .)
+    PLUS            reduce using rule 11 (expression -> INPUT LPAREN RPAREN .)
+    PRINT           reduce using rule 11 (expression -> INPUT LPAREN RPAREN .)
+    NAME            reduce using rule 11 (expression -> INPUT LPAREN RPAREN .)
+    MINUS           reduce using rule 11 (expression -> INPUT LPAREN RPAREN .)
+    INT             reduce using rule 11 (expression -> INPUT LPAREN RPAREN .)
+    INPUT           reduce using rule 11 (expression -> INPUT LPAREN RPAREN .)
+    LPAREN          reduce using rule 11 (expression -> INPUT LPAREN RPAREN .)
+    $end            reduce using rule 11 (expression -> INPUT LPAREN RPAREN .)
+
+
+state 22
+
+    (7) expression -> expression PLUS expression .
+    (7) expression -> expression . PLUS expression
+
+    RPAREN          reduce using rule 7 (expression -> expression PLUS expression .)
+    PLUS            reduce using rule 7 (expression -> expression PLUS expression .)
+    PRINT           reduce using rule 7 (expression -> expression PLUS expression .)
+    NAME            reduce using rule 7 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 7 (expression -> expression PLUS expression .)
+    INT             reduce using rule 7 (expression -> expression PLUS expression .)
+    INPUT           reduce using rule 7 (expression -> expression PLUS expression .)
+    LPAREN          reduce using rule 7 (expression -> expression PLUS expression .)
+    $end            reduce using rule 7 (expression -> expression PLUS expression .)
+
+  ! PLUS            [ shift and go to state 17 ]
+
