@@ -29,7 +29,7 @@ def flaten(n):
 		return flatenast
  
 	elif isinstance(n, Stmt):
-		[flaten(x) for x in n.nodes]
+		[flaten(z) for z in n.nodes]
 		return 1 
  
 	elif isinstance(n, Printnl):
